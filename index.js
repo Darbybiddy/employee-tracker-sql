@@ -44,7 +44,6 @@ function questions() {
         case "View departments":
           viewDepartment();
           break;
-          quit();
       }
     });
 
@@ -122,15 +121,29 @@ function questions() {
       .then(function (answers) {});
   }
 }
-// WHEN I choose to view all employees
-// THEN I am presented with a formatted table showing employee data,
-//including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
-function viewEmployees() {}
 
-// WHEN I choose to view all roles
-// THEN I am presented with the job title, role id, the department that role belongs to, and the salary for that role
-function viewRoles() {}
+function viewEmployees() {
+  const sql = `SELECT * FROM employee`;
+  db.query(sql, (err, res) => {
+    if (err) throw err;
+    console.table(res);
+    questions();
+  });
+}
 
-function viewDepartment() {}
-
-function quit() {}
+function viewRoles() {
+  const sql = `SELECT * FROM role`;
+  db.query(sql, (err, res) => {
+    if (err) throw err;
+    console.table(res);
+    questions();
+  });
+}
+function viewDepartment() {
+  const sql = `SELECT * FROM department`;
+  db.query(sql, (err, res) => {
+    if (err) throw err;
+    console.table(res);
+    questions();
+  });
+}
