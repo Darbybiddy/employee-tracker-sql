@@ -6,8 +6,12 @@ const db = mysql.createConnection({
   // Your MySQL username,
   user: 'root',
   // Your MySQL password
-  password: process.env.PW,
+  password: process.env.DB_PW,
   database: 'employee_tracker_db',
   
 });
 module.exports = db;
+
+
+
+
